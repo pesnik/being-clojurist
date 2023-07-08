@@ -87,28 +87,38 @@
 
 ;; make a total bill invoice for a resurant order
 (def bill
-  [{:platter 100}
-   {:meat-bull 150}
-   {:lemonade 45}])
+  [{:item "platter"    :price 100}
+   {:item "meat-bull"  :price 150}
+   {:item "lemonade"   :price 45}])
 
 ;; forget to add a bill for the coffee??
 (defn update-bill
   [new-item]
   (conj bill new-item))
 
-(update-bill {:coffee 67})
-(update-bill {:parota 71})
+(update-bill {:item "coffee" :price 67}) ;; ??
+(update-bill {:item "parota" :price 71}) ;; not adding to the final bill???
 
 (println bill)
 
-;; (reduce
-;;  (fn [init {:key price}]
-;;    (+ init price))
-;;  10
-;;  [{:coffee 30}])
-;;
-;; (def total-price (reduce (fn [init {:keys [price]}] (+ init price)) 0 [{:coffee 30}]))
+(def total-price
+  (reduce
+   (fn [init {:keys [price]}]
+     (+ init price))
+   0
+   bill))
+(println "Total price:" total-price)
+
+;; (def total-price
+;;   (reduce
+;;    (fn [init {:keys [price]}]
+;;      (+ init price))
+;;    0
+;;    [{:item "coffee" :price 30}
+;;     {:item "parota" :price 43}]))
 ;; (println "Total price:" total-price)
+
+
 
 (def data
   [{:name "Alice" :age 25}
