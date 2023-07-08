@@ -79,3 +79,45 @@
    {:first-name "Rohid" :last-name "Hasan" :roll 2}])
 
 (map :first-name students)
+
+;;
+;; Reduce
+;;
+(reduce + [1 2 3 4])
+
+;; make a total bill invoice for a resurant order
+(def bill
+  [{:platter 100}
+   {:meat-bull 150}
+   {:lemonade 45}])
+
+;; forget to add a bill for the coffee??
+(defn update-bill
+  [new-item]
+  (conj bill new-item))
+
+(update-bill {:coffee 67})
+(update-bill {:parota 71})
+
+(println bill)
+
+;; (reduce
+;;  (fn [init {:key price}]
+;;    (+ init price))
+;;  10
+;;  [{:coffee 30}])
+;;
+;; (def total-price (reduce (fn [init {:keys [price]}] (+ init price)) 0 [{:coffee 30}]))
+;; (println "Total price:" total-price)
+
+(def data
+  [{:name "Alice" :age 25}
+   {:name "Bob" :age 30}
+   {:name "Charlie" :age 35}])
+
+(defn sum-ages [total-map current-map]
+  (update total-map :age + (:age current-map)))
+
+(def total-age (reduce sum-ages {:age 0} data))
+
+(println "Total age:" (:age total-age))
