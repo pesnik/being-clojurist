@@ -1,0 +1,1 @@
+["^ ","~$even-odd",["^ ","~:row",8,"~:col",1,"~:fixed-arities",["~#set",[1]],"~:name","^0","~:ns","~$user","~:top-ns",null,"~:arities",["^ ","~i1",["^ ","~:ret",["^4",["~:string"]],"~:arglist-str","[number]"]],"~:type","~:fn"],"~:filename","/Users/r_hasan/being-clojurist/braveclojure.com/chapter3_excercise.clj"]
