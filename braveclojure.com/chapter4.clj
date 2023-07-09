@@ -131,3 +131,19 @@
 (def total-age (reduce sum-ages {:age 0} data))
 
 (println "Total age:" (:age total-age))
+
+;;
+;; take, drop, take-while and drop-while
+;;
+(take 3 [1 3 5 7 9])
+(drop 3 [1 3 5 7 9])
+
+(def months
+  [{:month "January" :idx 1}
+   {:month "February" :idx 2}
+   {:month "March" :idx 3}])
+
+(take-while #(<= (:idx %) 2) months)
+(drop-while #(<= (:idx %) 2) months)
+
+(take-while #(<= (:idx %) 2) (drop-while #(< (:idx %) 2) months))
