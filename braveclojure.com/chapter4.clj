@@ -165,3 +165,8 @@
 (add5 5)
 
 ;; complement
+;; Filter and Some
+;;
+
+(filter #(= (mod (:idx %) 2) 0) months)
+(some #(= (mod (:idx %) 2) 0) months)
