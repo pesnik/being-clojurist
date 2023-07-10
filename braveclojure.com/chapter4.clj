@@ -147,3 +147,21 @@
 (drop-while #(<= (:idx %) 2) months)
 
 (take-while #(<= (:idx %) 2) (drop-while #(< (:idx %) 2) months))
+
+;;
+;; print first 10 even numbers using lazy sequence
+;;
+(defn even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+(take 10 (even-numbers))
+
+;; apply, partial
+(max 1 2 3)
+(max [1 2 3])
+(apply max [1 3 4])
+
+(def add5 (partial + 10))
+(add5 5)
+
+;; complement
