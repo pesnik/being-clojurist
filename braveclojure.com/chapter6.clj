@@ -26,3 +26,25 @@
   (:require [chapter6-test-alias :as aliases]))
 
 (println yahoo)
+
+;; Thread Macro
+(def print-it #(str "Your output is " %))
+(def increment-it #(inc %))
+(def multiply-it #(* % 2))
+
+(defn thread-first
+  [input]
+  (-> input
+      (increment-it)
+      (multiply-it)
+      (print-it)))
+
+(defn thread-last
+  [input]
+  (->> input
+      (increment-it)
+      (multiply-it)
+      (print-it)))
+
+(thread-first 12)
+(thread-last 12)
