@@ -28,3 +28,16 @@
 (let [x (future (Thread/sleep 1000) (println "Hello after 1s"))]
   @x
   (realized? x))
+
+;; Delays (for using where we can decalre a instruction, until forced not evaluted)
+(def hunky-punky
+  (delay (let [m "Just call me dear, i'll be there"]
+           (println "I don't know yet what is the purpose of this message: " m)
+           m)))
+(force hunky-punky)
+@hunky-punky
+
+;; Promises
+(def new-promise (promise))
+(deliver new-promise (+ 1 1))
+@new-promise
